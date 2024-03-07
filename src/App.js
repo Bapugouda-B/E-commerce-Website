@@ -1,11 +1,13 @@
 import Navbar from "./component/Navigation/Navbar.js";
+import Home from "./pages/Home/home.js";
 
 export default function App() {
   return (
-    <h1 className="">
-      <div>
+    <div className="">
         <Navbar />
+      <div>
+        <Home />
       </div>
-    </h1>
+    </div>
   )
 }
