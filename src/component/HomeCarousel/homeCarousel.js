@@ -4,14 +4,14 @@ import ProductCarousel from "../ProductCarousel/ProductCarousel.js";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import { Button } from "@mui/material";
 
-function HomeCarousel() {
+function HomeCarousel({data}) {
   const [activeItem, setActiveItem] = useState(0);
 
   const responsive = {
     0: { items: 1 },
     568: { items: 3 },
-    720: { items: 4 },
-    1024: { items: 5 },
+    720: { items: 3.5 },
+    1024: { items: 4.4 },
   };
 
   const prev = () => setActiveItem(activeItem - 1);
@@ -19,12 +19,11 @@ function HomeCarousel() {
 
   const syncAvctiveItems = ({ item }) => setActiveItem(item);
 
-  const items = [1, 1, 1, 1, 1, 1, 1].map((item) => <ProductCarousel />);
+  const items = data.map((item) => <ProductCarousel product={item} />);
   return (
-    <div className="px-2 lg:px-8">
+    <div className="border">
       <div className="relative p-5">
         <AliceCarousel
-          mouseTracking
           items={items}
           responsive={responsive}
           disableButtonsControls
@@ -32,34 +31,37 @@ function HomeCarousel() {
           onSlideChange={syncAvctiveItems}
           activeItem={activeItem}
         />
+        {activeItem !== items.length-5 &&
         <Button
           onClick={prev}
           variant="contained"
-          className="z-50"
+          className="z-50 bg-white"
           sx={{
             position: "absolute",
-            top: "8rem",
+            top: "11rem",
             right: "0rem",
             transform: "translateX(50%) rotate(90deg)",
           }}
           arial-label="next"
         >
           <KeyboardDoubleArrowLeftIcon sx={{ transform: "rotate(90deg)" }} />
-        </Button>
+        </Button> }
+        {activeItem !== 0 &&
         <Button
           onClick={next}
           variant="contained"
           className="z-50"
           sx={{
             position: "absolute",
-            top: "8rem",
+            top: "11rem",
             left: "0",
-            transform: "translateX(-50%) rotate(90deg)",
-          }}
+            transform: "translateX(-50%) rotate(-90deg)",
+           bgcolor:"white",
+        }}
           arial-label="next"
         >
           <KeyboardDoubleArrowLeftIcon sx={{ transform: "rotate(-90deg)" }} />
-        </Button>
+        </Button>}
       </div>
     </div>
   );
