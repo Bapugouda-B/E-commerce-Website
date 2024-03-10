@@ -8,8 +8,10 @@ function Home() {
     <div>
         <Carousel />
         <div className='space-y-10 py-20 flex flex-col justify-center px-5 lg:px-10 '>
-            <HomeCarousel data={menKurta}/>
-            <HomeCarousel data={menKurta}/>
+            <HomeCarousel data={menKurta} sectionName={"Men's Kurta"}/>
+            <HomeCarousel data={menKurta} sectionName={"Men's Shoes"}/>
+            <HomeCarousel data={menKurta} sectionName={"Men's Shirts"}/>
+            <HomeCarousel data={menKurta} sectionName={"Women's Saree"}/>
         </div>
       
     </div>

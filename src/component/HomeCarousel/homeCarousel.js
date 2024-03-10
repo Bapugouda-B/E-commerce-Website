@@ -4,12 +4,12 @@ import ProductCarousel from "../ProductCarousel/ProductCarousel.js";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import { Button } from "@mui/material";
 
-function HomeCarousel({data}) {
+function HomeCarousel({data, sectionName}) {
   const [activeItem, setActiveItem] = useState(0);
 
   const responsive = {
     0: { items: 1 },
-    568: { items: 3 },
+    568: { items: 2 },
     720: { items: 3.5 },
     1024: { items: 4.4 },
   };
@@ -22,6 +22,7 @@ function HomeCarousel({data}) {
   const items = data.map((item) => <ProductCarousel product={item} />);
   return (
     <div className="border">
+      <h2 className="text-xl font-extrabold text-blue-900 py-4 ">{sectionName}</h2>
       <div className="relative p-5">
         <AliceCarousel
           items={items}
